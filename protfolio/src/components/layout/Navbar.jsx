@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 import { useSite } from "../../context/SiteContext"
+import { handleSectionClick } from "../../lib/sectionNav"
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -15,6 +17,8 @@ const navLinks = [
 
 export default function Navbar() {
   const { get } = useSite()
+  const navigate = useNavigate()
+  const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -31,6 +35,10 @@ export default function Navbar() {
     }
   }, [mobileOpen])
 
+  const onNavClick = (event, href) => {
+    handleSectionClick(event, href, navigate, location.pathname, () => setMobileOpen(false))
+  }
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -43,21 +51,21 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
-        <a href="#" className="group flex flex-col">
+        <Link to="/" className="group flex flex-col" onClick={() => setMobileOpen(false)}>
           <span className="font-serif text-xl md:text-2xl font-semibold text-charcoal tracking-wide">
             Ruchi
           </span>
           <span className="text-[10px] uppercase tracking-[0.2em] text-gold group-hover:text-gold-light transition-colors">
             House Of Arts
           </span>
-        </a>
+        </Link>
 
-        {/* Desktop nav */}
         <ul className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
+                onClick={(e) => onNavClick(e, link.href)}
                 className="inline-flex items-center gap-1.5 text-sm text-charcoal-soft hover:text-charcoal relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all hover:after:w-full transition-colors"
               >
                 {link.label}
@@ -73,6 +81,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
+          onClick={(e) => onNavClick(e, "#contact")}
           className="hidden lg:inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-to-r from-gold to-gold-light text-charcoal shadow-md shadow-gold/20 hover:shadow-gold/35 transition-shadow"
         >
           Book Order
@@ -88,7 +97,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -107,7 +115,7 @@ export default function Navbar() {
                 >
                   <a
                     href={link.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => onNavClick(e, link.href)}
                     className="block text-lg font-medium text-charcoal py-1"
                   >
                     {link.label}
@@ -122,7 +130,7 @@ export default function Navbar() {
               <li>
                 <a
                   href="#contact"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => onNavClick(e, "#contact")}
                   className="inline-flex mt-2 px-6 py-3 rounded-full text-sm font-medium bg-gradient-to-r from-gold to-gold-light text-charcoal"
                 >
                   Book Custom Order

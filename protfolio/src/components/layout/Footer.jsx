@@ -1,9 +1,13 @@
+import { useLocation, useNavigate } from "react-router-dom"
 import { useSite } from "../../context/SiteContext"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { getIcon } from "../../lib/icons.jsx"
+import { handleSectionClick } from "../../lib/sectionNav"
 
 export default function Footer() {
   const { get, data } = useSite()
+  const navigate = useNavigate()
+  const location = useLocation()
   const year = new Date().getFullYear()
   const instagram = data.socials?.find((s) => s.platform === "instagram")
 
@@ -31,7 +35,13 @@ export default function Footer() {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm hover:text-gold-light transition-colors">{link.label}</a>
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleSectionClick(e, link.href, navigate, location.pathname)}
+                    className="text-sm hover:text-gold-light transition-colors"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

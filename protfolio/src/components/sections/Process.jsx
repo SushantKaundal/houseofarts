@@ -64,30 +64,30 @@ export default function Process() {
         <div ref={timelineRef} className="relative">
           <div ref={lineRef} className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gold via-gold-light to-gold" />
 
-          <div className="space-y-10 md:space-y-14">
+          <div className="space-y-6 md:space-y-8">
             {processSteps.map((step, i) => {
               const Icon = stepIcons[i] || step.icon
               const thumb = processImages[i]
               return (
-                <div key={step.step} className="process-step relative flex gap-6 md:gap-10">
+                <div key={step.step} className="process-step relative flex gap-4 md:gap-6">
                   <div className="relative z-10 shrink-0">
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-lg shadow-gold/30">
-                      <Icon size={22} className="text-charcoal" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-lg shadow-gold/30">
+                      <Icon size={18} className="text-charcoal" />
                     </div>
                   </div>
-                  <div className="theme-process-card rounded-2xl p-6 md:p-8 flex-1 pt-5 overflow-hidden">
-                    <div className="flex flex-col sm:flex-row gap-5">
-                      <div className="flex-1">
-                        <span className="text-gold text-xs uppercase tracking-[0.2em]">Step {step.step}</span>
-                        <h3 className="font-serif text-xl md:text-2xl theme-card-text mt-1 mb-3">{step.title}</h3>
-                        <p className="theme-card-text-muted text-sm md:text-base leading-relaxed">{step.description}</p>
+                  <div className="theme-process-card rounded-xl p-4 md:p-5 flex-1 overflow-hidden">
+                    <div className="flex flex-row items-center gap-3 md:gap-4">
+                      <div className="flex-1 min-w-0">
+                        <span className="text-gold text-[10px] uppercase tracking-[0.2em]">Step {step.step}</span>
+                        <h3 className="font-serif text-lg md:text-xl theme-card-text mt-0.5 mb-1.5">{step.title}</h3>
+                        <p className="theme-card-text-muted text-xs md:text-sm leading-relaxed line-clamp-3 md:line-clamp-none">{step.description}</p>
                       </div>
                       {thumb?.src && (
-                        <div className="w-full sm:w-44 md:w-52 rounded-xl overflow-hidden shrink-0 border border-white/10 flex items-center justify-center bg-black/10">
+                        <div className="w-20 h-16 sm:w-24 sm:h-20 md:w-28 md:h-24 rounded-lg overflow-hidden shrink-0 border border-white/10 flex items-center justify-center bg-black/10">
                           <img
                             src={resolveImageUrl(thumb.src)}
                             alt={thumb.alt}
-                            className="w-full h-auto max-h-56 md:max-h-72 object-contain"
+                            className="w-full h-full object-contain"
                             loading="lazy"
                           />
                         </div>

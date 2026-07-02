@@ -44,7 +44,7 @@ export default function HeroWorkStrip() {
     <section
       aria-label="Featured work preview"
       id="work-strip"
-      className="relative z-10 -mt-12 md:-mt-14 py-0 md:py-1 pb-4"
+      className="relative z-10 mt-4 lg:-mt-14 py-0 md:py-1 pb-4"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex overflow-hidden rounded-2xl lg:ml-auto lg:w-[58%] [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">

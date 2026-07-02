@@ -118,11 +118,15 @@ export default function Hero() {
               {get("site.tagline")}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <Button href="#gallery" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start relative z-20 pb-2">
+              <Button href="#gallery" variant="primary" className="w-full sm:w-auto">
                 View Artworks
               </Button>
-              <Button href="#contact" variant="secondary">
+              <Button
+                href="#contact"
+                variant="secondary"
+                className="w-full sm:w-auto bg-white/85 backdrop-blur-md border-gold/40 shadow-md"
+              >
                 Book Custom Order
               </Button>
             </div>

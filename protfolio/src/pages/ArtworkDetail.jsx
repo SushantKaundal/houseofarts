@@ -1,5 +1,5 @@
-import { useMemo } from "react"
-import { useParams, Link, Navigate } from "react-router-dom"
+import { useMemo, useEffect } from "react"
+import { useParams, useNavigate, Link, Navigate } from "react-router-dom"
 import { ArrowLeft, MessageCircle } from "lucide-react"
 import Navbar from "../components/layout/Navbar"
 import Footer from "../components/layout/Footer"
@@ -10,6 +10,7 @@ import { useLenis } from "../hooks/useLenis"
 
 export default function ArtworkDetail() {
   useLenis()
+  const navigate = useNavigate()
   const { id } = useParams()
   const { data, get } = useSite()
 
@@ -18,6 +19,12 @@ export default function ArtworkDetail() {
       (g) => String(g._id || g.id) === String(id)
     )
   }, [data.gallery, id])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [id])
 
   if (!item) return <Navigate to="/#gallery" replace />
 
@@ -32,7 +39,11 @@ export default function ArtworkDetail() {
       <main className="min-h-screen theme-page-bg pt-24 pb-16">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <Link
-            to="/#gallery"
+            to="/"
+            onClick={(e) => {
+              e.preventDefault()
+              navigate({ pathname: "/", hash: "gallery" })
+            }}
             className="inline-flex items-center gap-2 text-sm theme-text-muted hover:text-gold transition-colors mb-8"
           >
             <ArrowLeft size={16} />
@@ -40,12 +51,12 @@ export default function ArtworkDetail() {
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-            <div className="rounded-3xl overflow-hidden theme-hero-frame p-[3px] shadow-2xl">
-              <div className="rounded-[1.4rem] overflow-hidden bg-ivory flex items-center justify-center min-h-[320px]">
+            <div className="rounded-2xl overflow-hidden theme-hero-frame p-[2px] shadow-xl max-w-md mx-auto lg:max-w-none">
+              <div className="rounded-[1.2rem] overflow-hidden bg-ivory flex items-center justify-center min-h-[200px] md:min-h-[320px]">
                 <img
                   src={resolveImageUrl(item.src)}
                   alt={item.alt || item.title}
-                  className="w-full h-auto max-h-[68vh] object-contain"
+                  className="w-full h-auto max-h-[220px] sm:max-h-[280px] md:max-h-[68vh] object-contain"
                 />
               </div>
             </div>
