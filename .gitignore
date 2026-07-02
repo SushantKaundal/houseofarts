@@ -23,4 +23,5 @@ Thumbs.db
 
 # Large assets not needed in repo
 *.zip
+*.tar.gz
 ruchinew/
