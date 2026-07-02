@@ -1,0 +1,190 @@
+/* ═══════════════════════════════════════════════════════════
+   HOUSE OF ARTS — Website Theme System
+   Admin selects theme → applied via data-site-theme on <html>
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Pearl & Gold (default) ── */
+[data-site-theme="pearl-gold"] {
+  --color-ivory: #faf7f4;
+  --color-ivory-dark: #f0ebe5;
+  --color-blush: #e8b4c8;
+  --color-blush-light: #f5dde6;
+  --color-lavender: #c4b5d9;
+  --color-lavender-light: #e8e0f0;
+  --color-ocean: #7eb8da;
+  --color-ocean-deep: #4a8fb5;
+  --color-gold: #c9a962;
+  --color-gold-light: #e3c58e;
+  --color-pearl: #f8f4ef;
+  --color-charcoal: #2d2a32;
+  --color-charcoal-soft: #4a4555;
+  --theme-hero-gradient: linear-gradient(135deg, #faf7f4 0%, #f8f4ef 40%, #f5dde6 100%);
+  --theme-accent-gradient: linear-gradient(90deg, #c9a962, #e3c58e, #c9a962);
+  --theme-frame-gradient: linear-gradient(135deg, #c9a962, #e8b4c8, #c4b5d9);
+  --theme-glow: rgba(201, 169, 98, 0.35);
+  --theme-pattern: radial-gradient(circle at 20% 30%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(232, 180, 200, 0.1) 0%, transparent 45%);
+  --theme-work-strip-bg: linear-gradient(180deg, #f8f4ef 0%, #faf7f4 100%);
+}
+
+/* ── Rose Garden ── */
+[data-site-theme="rose-garden"] {
+  --color-ivory: #fff5f7;
+  --color-ivory-dark: #fce8ec;
+  --color-blush: #d4567a;
+  --color-blush-light: #f9c5d5;
+  --color-lavender: #e8a0b4;
+  --color-lavender-light: #fde0e8;
+  --color-ocean: #c97b8f;
+  --color-ocean-deep: #a8435f;
+  --color-gold: #c9a04a;
+  --color-gold-light: #e8c878;
+  --color-pearl: #fff0f3;
+  --color-charcoal: #4a2030;
+  --color-charcoal-soft: #6b3848;
+  --theme-hero-gradient: linear-gradient(160deg, #fff0f3 0%, #fde0e8 50%, #f9c5d5 100%);
+  --theme-accent-gradient: linear-gradient(90deg, #d4567a, #e8a0b4, #c9a04a);
+  --theme-frame-gradient: linear-gradient(135deg, #d4567a, #f9c5d5, #c9a04a);
+  --theme-glow: rgba(212, 86, 122, 0.4);
+  --theme-pattern: radial-gradient(ellipse at 10% 20%, rgba(212, 86, 122, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 80%, rgba(201, 160, 74, 0.1) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4567a' fill-opacity='0.04'%3E%3Cpath d='M30 30c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  --theme-work-strip-bg: linear-gradient(180deg, #fde0e8 0%, #fff5f7 100%);
+}
+
+/* ── Ocean Dream ── */
+[data-site-theme="ocean-dream"] {
+  --color-ivory: #eef6fb;
+  --color-ivory-dark: #dceef8;
+  --color-blush: #a8d4ec;
+  --color-blush-light: #d4ecf8;
+  --color-lavender: #7eb8da;
+  --color-lavender-light: #c5e4f5;
+  --color-ocean: #2a8fc2;
+  --color-ocean-deep: #1a5f85;
+  --color-gold: #5ba8c9;
+  --color-gold-light: #8ecae6;
+  --color-pearl: #f0f8fc;
+  --color-charcoal: #1a3a4a;
+  --color-charcoal-soft: #2d5a6e;
+  --theme-hero-gradient: linear-gradient(145deg, #eef6fb 0%, #d4ecf8 40%, #c5e4f5 100%);
+  --theme-accent-gradient: linear-gradient(90deg, #2a8fc2, #7eb8da, #5ba8c9);
+  --theme-frame-gradient: linear-gradient(135deg, #2a8fc2, #7eb8da, #a8d4ec);
+  --theme-glow: rgba(42, 143, 194, 0.35);
+  --theme-pattern: radial-gradient(circle at 25% 75%, rgba(42, 143, 194, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(126, 184, 218, 0.15) 0%, transparent 45%),
+    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40 Q20 20 40 40 T80 40' stroke='%232a8fc2' stroke-opacity='0.06' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+  --theme-work-strip-bg: linear-gradient(180deg, #d4ecf8 0%, #eef6fb 100%);
+}
+
+/* ── Midnight Luxe ── */
+[data-site-theme="midnight-luxe"] {
+  --color-ivory: #1e1c24;
+  --color-ivory-dark: #141218;
+  --color-blush: #6b5b95;
+  --color-blush-light: #3d3550;
+  --color-lavender: #8b7cb8;
+  --color-lavender-light: #2a2540;
+  --color-ocean: #4a6fa5;
+  --color-ocean-deep: #2d4a70;
+  --color-gold: #e3c58e;
+  --color-gold-light: #f0dba8;
+  --color-pearl: #252229;
+  --color-charcoal: #f0ebe5;
+  --color-charcoal-soft: #c8c0d0;
+  --theme-hero-gradient: linear-gradient(160deg, #141218 0%, #1e1c24 50%, #2a2540 100%);
+  --theme-accent-gradient: linear-gradient(90deg, #e3c58e, #f0dba8, #c9a962);
+  --theme-frame-gradient: linear-gradient(135deg, #e3c58e, #6b5b95, #8b7cb8);
+  --theme-glow: rgba(227, 197, 142, 0.25);
+  --theme-pattern: radial-gradient(circle at 50% 0%, rgba(227, 197, 142, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 90%, rgba(107, 91, 149, 0.15) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23e3c58e' fill-opacity='0.15'/%3E%3C/svg%3E");
+  --theme-work-strip-bg: linear-gradient(180deg, #1e1c24 0%, #141218 100%);
+}
+
+[data-site-theme="midnight-luxe"] .glass {
+  background: rgba(30, 28, 36, 0.65);
+  border-color: rgba(227, 197, 142, 0.15);
+}
+
+[data-site-theme="midnight-luxe"] .glass-dark {
+  background: rgba(10, 8, 14, 0.75);
+}
+
+/* ── Sunset Resin ── */
+[data-site-theme="sunset-resin"] {
+  --color-ivory: #fff8f0;
+  --color-ivory-dark: #fce8d8;
+  --color-blush: #e07a3a;
+  --color-blush-light: #f4c28a;
+  --color-lavender: #e8a060;
+  --color-lavender-light: #fde8c8;
+  --color-ocean: #d4652a;
+  --color-ocean-deep: #a84820;
+  --color-gold: #d4923a;
+  --color-gold-light: #f0c070;
+  --color-pearl: #fff4e8;
+  --color-charcoal: #3d2817;
+  --color-charcoal-soft: #5c4030;
+  --theme-hero-gradient: linear-gradient(150deg, #fff8f0 0%, #fde8c8 45%, #f4c28a 100%);
+  --theme-accent-gradient: linear-gradient(90deg, #e07a3a, #f4c28a, #d4923a);
+  --theme-frame-gradient: linear-gradient(135deg, #e07a3a, #f4c28a, #d4923a);
+  --theme-glow: rgba(224, 122, 58, 0.35);
+  --theme-pattern: radial-gradient(ellipse at 30% 20%, rgba(224, 122, 58, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(244, 194, 138, 0.2) 0%, transparent 50%);
+  --theme-work-strip-bg: linear-gradient(180deg, #fde8c8 0%, #fff8f0 100%);
+}
+
+/* ── Shared theme utilities ── */
+.theme-hero-bg {
+  background: var(--theme-hero-gradient);
+}
+
+.theme-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--theme-pattern);
+  pointer-events: none;
+}
+
+.theme-hero-glow {
+  background: linear-gradient(135deg, var(--theme-glow), transparent, var(--theme-glow));
+}
+
+.theme-hero-frame {
+  background: var(--theme-frame-gradient);
+}
+
+.theme-accent-text {
+  background-image: var(--theme-accent-gradient);
+}
+
+.theme-work-strip {
+  background: var(--theme-work-strip-bg);
+}
+
+.theme-work-thumb {
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--color-gold) 25%, transparent);
+}
+
+/* Section theme washes */
+[data-site-theme] #about {
+  background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-pearl) 50%, var(--color-ivory-dark) 100%) !important;
+}
+
+[data-site-theme] #services {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-lavender-light) 50%, transparent), var(--color-ivory), color-mix(in srgb, var(--color-blush-light) 40%, transparent)) !important;
+}
+
+[data-site-theme] #gallery {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-ivory-dark) 60%, transparent), var(--color-ivory), var(--color-pearl)) !important;
+}
+
+[data-site-theme="midnight-luxe"] #process {
+  background: linear-gradient(135deg, #0f0e12, #1a1820, #2a2540) !important;
+}
+
+[data-site-theme="midnight-luxe"] footer {
+  background: #0a080c !important;
+}

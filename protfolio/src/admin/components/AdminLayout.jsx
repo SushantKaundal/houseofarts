@@ -29,6 +29,7 @@ const NAV = [
   { to: "/admin/images", icon: Image, label: "Site Images" },
   { to: "/admin/gallery", icon: Grid3x3, label: "Gallery" },
   { to: "/admin/services", icon: Layers, label: "Service Cards" },
+  { to: "/admin/website-themes", icon: Palette, label: "Website Themes" },
   { to: "/admin/sliders", icon: Image, label: "Slider Images" },
   { to: "/admin/testimonials", icon: Star, label: "Happy Customers" },
   { to: "/admin/socials", icon: Share2, label: "Social Links" },
@@ -79,7 +80,7 @@ export default function AdminLayout({ admin, onThemeChange, onLogout }) {
         <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
           <div>
             <p className="text-xs uppercase tracking-wider opacity-50 mb-2 flex items-center gap-1">
-              <Palette size={12} /> Theme
+              <Palette size={12} /> Admin Panel Theme
             </p>
             <div className="grid grid-cols-2 gap-1.5">
               {THEMES.map((t) => (

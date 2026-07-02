@@ -79,6 +79,7 @@ async function seed() {
   // Site content
   const contentItems = [
     { key: "site.name", value: "House Of Arts", group: "site" },
+    { key: "site.theme", value: "pearl-gold", group: "site" },
     {
       key: "site.tagline",
       value: "Handcrafted resin art, customized gifts, home decor & timeless memories.",

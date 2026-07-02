@@ -18,6 +18,7 @@ function buildFallback() {
       "site.whatsapp": staticSite.whatsapp,
       "site.location": staticSite.location,
       "site.instagram": staticSite.instagram,
+      "site.theme": "pearl-gold",
       "hero.badge": "Handcrafted with Love",
       "hero.accentTitle": "Premium Finishing",
       "hero.accentSubtitle": "100% Handmade",

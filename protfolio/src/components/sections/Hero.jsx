@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, lazy, Suspense, useMemo } from "react"
+import { useRef, useEffect, useState, lazy, Suspense } from "react"
 import { motion } from "framer-motion"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -20,17 +20,6 @@ export default function Hero() {
   const [show3D, setShow3D] = useState(false)
 
   const heroImg = data.images?.hero || { src: "", alt: "Ruchi" }
-  const showcaseImages = useMemo(() => {
-    const heroSliders = data.sliders?.filter((s) => s.section === "hero") || []
-    const marquee = data.sliders?.filter((s) => s.section === "marquee") || []
-    const combined = [...heroSliders, ...marquee].slice(0, 10)
-    if (combined.length === 0 && data.gallery?.length) {
-      return data.gallery.slice(0, 8).map((g) => ({ src: g.src, alt: g.title }))
-    }
-    return combined
-  }, [data.sliders, data.gallery])
-
-  const filmstrip = [...showcaseImages, ...showcaseImages]
 
   useEffect(() => {
     setShow3D(window.innerWidth >= 768)
@@ -62,9 +51,9 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[100dvh] flex flex-col overflow-hidden"
+      className="relative overflow-hidden theme-hero"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-ivory via-pearl to-blush-light/40" />
+      <div className="absolute inset-0 theme-hero-bg" />
       <FloatingElements />
       {show3D && (
         <Suspense fallback={null}>
@@ -72,24 +61,23 @@ export default function Hero() {
         </Suspense>
       )}
 
-      <div className="relative z-10 flex-1 flex items-center max-w-7xl mx-auto px-4 md:px-8 w-full pt-20 pb-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
-          {/* Left: main image only */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full pt-24 pb-16 md:pt-28 md:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5 flex justify-center order-1">
             <motion.div
               ref={imageRef}
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-full max-w-[280px] sm:max-w-xs lg:max-w-sm"
+              className="relative w-full max-w-[260px] sm:max-w-xs lg:max-w-sm mb-2"
             >
-              <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-gold/30 via-blush/20 to-ocean/20 blur-sm" />
-              <div className="absolute -inset-0.5 rounded-[1.75rem] bg-gradient-to-br from-gold via-blush/50 to-lavender/50 p-[2px]">
+              <div className="absolute -inset-3 rounded-[2rem] theme-hero-glow blur-sm" />
+              <div className="absolute -inset-0.5 rounded-[1.75rem] theme-hero-frame p-[2px]">
                 <div className="rounded-[1.75rem] overflow-hidden bg-ivory">
                   <img
                     src={resolveImageUrl(heroImg.src)}
                     alt={heroImg.alt}
-                    className="w-full aspect-[3/4] object-cover object-top max-h-[38vh] lg:max-h-[48vh]"
+                    className="w-full aspect-[3/4] object-cover object-top"
                     fetchPriority="high"
                   />
                 </div>
@@ -110,7 +98,6 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: text + CTA */}
           <div ref={textRef} className="lg:col-span-7 order-2 text-center lg:text-left">
             <motion.span
               initial={{ opacity: 0 }}
@@ -125,7 +112,7 @@ export default function Hero() {
               {siteName.split(" ").map((word, i) => (
                 <span key={i} className="inline-block mr-2 last:mr-0">
                   {word === "Arts" ? (
-                    <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">
+                    <span className="theme-accent-text bg-clip-text text-transparent">
                       {word}
                     </span>
                   ) : (
@@ -135,7 +122,7 @@ export default function Hero() {
               ))}
             </h1>
 
-            <p className="text-sm md:text-base text-charcoal-soft leading-relaxed max-w-md mx-auto lg:mx-0 mb-5">
+            <p className="text-sm md:text-base text-charcoal-soft leading-relaxed max-w-md mx-auto lg:mx-0 mb-6">
               {get("site.tagline")}
             </p>
 
@@ -149,44 +136,17 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
+        <motion.a
+          href="#work-strip"
+          className="flex flex-col items-center gap-1 mt-12 text-charcoal-soft/50 hover:text-gold transition-colors"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <span className="text-[9px] uppercase tracking-[0.2em]">Explore</span>
+          <ChevronDown size={16} />
+        </motion.a>
       </div>
-
-      {/* Work slider — full width at bottom of hero, below image & text */}
-      {showcaseImages.length > 0 && (
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14 pt-2 shrink-0">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-charcoal-soft/60 mb-3 text-center">
-            A glimpse of my work
-          </p>
-          <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-            <div className="flex gap-3 animate-marquee shrink-0">
-              {filmstrip.map((item, i) => (
-                <div
-                  key={`${item.src}-strip-${i}`}
-                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden shrink-0 shadow-md border border-white/60 resin-shine"
-                >
-                  <img
-                    src={resolveImageUrl(item.src)}
-                    alt={item.alt || `Creation ${i + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    draggable={false}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      <motion.a
-        href="#about"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5 text-charcoal-soft/50 hover:text-gold transition-colors z-10"
-        animate={{ y: [0, 5, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <span className="text-[9px] uppercase tracking-[0.2em]">Explore</span>
-        <ChevronDown size={16} />
-      </motion.a>
     </section>
   )
 }

@@ -12,6 +12,7 @@ import SlidersPage from "./pages/SlidersPage"
 import TestimonialsPage from "./pages/TestimonialsPage"
 import SocialsPage from "./pages/SocialsPage"
 import SubmissionsPage from "./pages/SubmissionsPage"
+import WebsiteThemesPage from "./pages/WebsiteThemesPage"
 
 function ProtectedRoute({ admin, children }) {
   if (!admin) return <Navigate to="/admin/login" replace />
@@ -66,6 +67,7 @@ export default function AdminApp() {
         <Route path="sliders" element={<SlidersPage />} />
         <Route path="testimonials" element={<TestimonialsPage />} />
         <Route path="socials" element={<SocialsPage />} />
+        <Route path="website-themes" element={<WebsiteThemesPage />} />
       </Route>
     </Routes>
   )
