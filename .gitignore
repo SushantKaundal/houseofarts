@@ -21,7 +21,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Large assets not needed in repo
+# Large assets not needed in repo (root copy only; deployed copy lives in protfolio/public)
 *.zip
 *.tar.gz
-ruchinew/
+/ruchinew/
