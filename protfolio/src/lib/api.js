@@ -1,4 +1,9 @@
 const API_BASE = import.meta.env.VITE_API_URL || "/api"
+const API_ORIGIN = (() => {
+  if (import.meta.env.VITE_UPLOADS_BASE) return import.meta.env.VITE_UPLOADS_BASE
+  if (API_BASE.startsWith("http")) return API_BASE.replace(/\/api\/?$/, "")
+  return ""
+})()
 
 function getToken() {
   return localStorage.getItem("ruchi_admin_token")
@@ -103,9 +108,7 @@ export const api = {
 
 export function resolveImageUrl(src) {
   if (!src) return ""
-  if (src.startsWith("http") || src.startsWith("/uploads")) {
-    const base = import.meta.env.VITE_API_URL?.replace("/api", "") || "http://localhost:5000"
-    return src.startsWith("/uploads") ? `${base}${src}` : src
-  }
+  if (src.startsWith("http")) return src
+  if (src.startsWith("/uploads")) return `${API_ORIGIN}${src}`
   return src
 }

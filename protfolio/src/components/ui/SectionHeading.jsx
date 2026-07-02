@@ -51,7 +51,7 @@ export default function SectionHeading({
       )}
       <h2
         className={`reveal-item font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight ${
-          dark ? "text-ivory" : "text-charcoal"
+          dark ? "theme-heading-dark" : "theme-text-primary"
         }`}
       >
         {title}
@@ -60,7 +60,7 @@ export default function SectionHeading({
       {subtitle && (
         <p
           className={`reveal-item max-w-2xl text-base md:text-lg leading-relaxed mt-2 ${
-            dark ? "text-ivory/75" : "text-charcoal-soft"
+            dark ? "theme-heading-dark-muted" : "theme-text-muted"
           } ${align === "center" ? "mx-auto" : ""}`}
         >
           {subtitle}

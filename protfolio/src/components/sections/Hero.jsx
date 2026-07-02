@@ -4,7 +4,6 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ChevronDown } from "lucide-react"
 import Button from "../ui/Button"
-import FloatingElements from "../effects/FloatingElements"
 import { useSite } from "../../context/SiteContext"
 import { resolveImageUrl } from "../../lib/api"
 
@@ -48,20 +47,14 @@ export default function Hero() {
   const siteName = get("site.name", "House Of Arts")
 
   return (
-    <section
-      ref={sectionRef}
-      id="hero"
-      className="relative overflow-hidden theme-hero"
-    >
-      <div className="absolute inset-0 theme-hero-bg" />
-      <FloatingElements />
+    <section ref={sectionRef} id="hero" className="relative z-10">
       {show3D && (
         <Suspense fallback={null}>
-          <ResinScene3D className="absolute inset-0 w-full h-full opacity-40 hidden md:block" />
+          <ResinScene3D className="absolute inset-0 w-full h-full opacity-30 hidden md:block pointer-events-none" />
         </Suspense>
       )}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full pt-24 pb-16 md:pt-28 md:pb-20">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 w-full pt-24 pb-10 md:pt-28 md:pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5 flex justify-center order-1">
             <motion.div
@@ -69,15 +62,15 @@ export default function Hero() {
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-full max-w-[260px] sm:max-w-xs lg:max-w-sm mb-2"
+              className="relative w-full max-w-[260px] sm:max-w-sm lg:max-w-md"
             >
               <div className="absolute -inset-3 rounded-[2rem] theme-hero-glow blur-sm" />
-              <div className="absolute -inset-0.5 rounded-[1.75rem] theme-hero-frame p-[2px]">
-                <div className="rounded-[1.75rem] overflow-hidden bg-ivory">
+              <div className="relative rounded-[1.75rem] theme-hero-frame p-[2px]">
+                <div className="rounded-[1.75rem] overflow-hidden bg-ivory flex items-center justify-center">
                   <img
                     src={resolveImageUrl(heroImg.src)}
                     alt={heroImg.alt}
-                    className="w-full aspect-[3/4] object-cover object-top"
+                    className="w-full h-auto max-h-[58vh] md:max-h-[66vh] object-contain"
                     fetchPriority="high"
                   />
                 </div>
@@ -91,7 +84,7 @@ export default function Hero() {
                 <p className="text-[10px] text-gold font-medium uppercase tracking-wider">
                   {get("hero.accentTitle", "Premium Finishing")}
                 </p>
-                <p className="text-xs font-serif text-charcoal">
+                <p className="text-xs font-serif theme-text-primary">
                   {get("hero.accentSubtitle", "100% Handmade")}
                 </p>
               </motion.div>
@@ -108,7 +101,7 @@ export default function Hero() {
               {get("hero.badge", "Handcrafted with Love")}
             </motion.span>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold text-charcoal leading-[1.08] mb-3">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold theme-text-primary leading-[1.08] mb-3">
               {siteName.split(" ").map((word, i) => (
                 <span key={i} className="inline-block mr-2 last:mr-0">
                   {word === "Arts" ? (
@@ -122,7 +115,7 @@ export default function Hero() {
               ))}
             </h1>
 
-            <p className="text-sm md:text-base text-charcoal-soft leading-relaxed max-w-md mx-auto lg:mx-0 mb-6">
+            <p className="text-sm md:text-base theme-text-muted leading-relaxed max-w-md mx-auto lg:mx-0 mb-6">
               {get("site.tagline")}
             </p>
 
@@ -139,7 +132,7 @@ export default function Hero() {
 
         <motion.a
           href="#work-strip"
-          className="flex flex-col items-center gap-1 mt-12 text-charcoal-soft/50 hover:text-gold transition-colors"
+          className="flex flex-col items-center gap-1 mt-10 theme-text-muted hover:text-gold transition-colors"
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >

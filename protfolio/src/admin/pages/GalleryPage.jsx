@@ -55,7 +55,7 @@ export default function GalleryPage() {
         <button
           type="button"
           className="admin-btn admin-btn-primary flex items-center gap-2"
-          onClick={() => setForm({ title: "", src: "", alt: "", category: categories[0]?.name || "Home Decor", order: items.length })}
+          onClick={() => setForm({ title: "", src: "", alt: "", description: "", category: categories[0]?.name || "Home Decor", order: items.length })}
         >
           <Plus size={16} /> Add Item
         </button>
@@ -91,6 +91,13 @@ export default function GalleryPage() {
         <div className="admin-card p-5 mb-6 space-y-4">
           <h3 className="font-medium">{form._id ? "Edit" : "New"} Gallery Item</h3>
           <input className="admin-input" placeholder="Title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+          <input className="admin-input" placeholder="Alt text" value={form.alt || ""} onChange={(e) => setForm({ ...form, alt: e.target.value })} />
+          <textarea
+            className="admin-input min-h-24"
+            placeholder="Artwork description (shown on artwork detail page and WhatsApp order text)"
+            value={form.description || ""}
+            onChange={(e) => setForm({ ...form, description: e.target.value })}
+          />
           <select className="admin-input" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })}>
             {categories.map((c) => <option key={c._id} value={c.name}>{c.name}</option>)}
           </select>
@@ -110,6 +117,7 @@ export default function GalleryPage() {
             <div className="p-3">
               <p className="text-sm font-medium truncate">{item.title}</p>
               <p className="text-xs opacity-50">{item.category}</p>
+              <p className="text-xs opacity-60 line-clamp-2 mt-1">{item.description || "No description set"}</p>
               <div className="flex gap-2 mt-2">
                 <button type="button" className="admin-btn admin-btn-ghost text-xs flex-1" onClick={() => setForm(item)}>Edit</button>
                 <button type="button" className="admin-btn admin-btn-danger text-xs" onClick={() => deleteItem(item._id)}>
