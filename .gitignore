@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.local
+.env.production
+*.pem
+
+# Logs & uploads
+*.log
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Build output
+protfolio/dist/
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large assets not needed in repo
+*.zip
+ruchinew/
