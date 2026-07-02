@@ -6,6 +6,7 @@ import { useSite } from "../../context/SiteContext"
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Workshop", href: "#workshop", badgeKey: "menu.workshop.badge" },
   { label: "Gallery", href: "#gallery" },
   { label: "Process", href: "#process" },
   { label: "Reviews", href: "#testimonials" },
@@ -57,9 +58,14 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-charcoal-soft hover:text-charcoal relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all hover:after:w-full transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm text-charcoal-soft hover:text-charcoal relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all hover:after:w-full transition-colors"
               >
                 {link.label}
+                {Boolean(get(link.badgeKey, "").trim()) && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[9px] uppercase tracking-[0.15em] bg-gold/20 text-gold border border-gold/40 leading-none">
+                    {get(link.badgeKey, "")}
+                  </span>
+                )}
               </a>
             </li>
           ))}
@@ -92,7 +98,7 @@ export default function Navbar() {
             className="lg:hidden glass border-t border-white/40 mt-3"
           >
             <ul className="flex flex-col px-5 py-6 gap-4">
-              {siteConfig.navLinks.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.li
                   key={link.href}
                   initial={{ x: -20, opacity: 0 }}
@@ -105,6 +111,11 @@ export default function Navbar() {
                     className="block text-lg font-medium text-charcoal py-1"
                   >
                     {link.label}
+                    {Boolean(get(link.badgeKey, "").trim()) && (
+                      <span className="ml-2 px-2 py-0.5 rounded-full text-[9px] uppercase tracking-[0.15em] bg-gold/20 text-gold border border-gold/40 leading-none">
+                        {get(link.badgeKey, "")}
+                      </span>
+                    )}
                   </a>
                 </motion.li>
               ))}

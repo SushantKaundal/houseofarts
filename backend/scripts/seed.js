@@ -128,6 +128,25 @@ async function seed() {
       value: "From elegant home decor to heartfelt keepsakes — each piece is crafted to perfection.",
       group: "services",
     },
+    { key: "workshop.badge", value: "Workshop", group: "workshop" },
+    { key: "workshop.title", value: "Learn Resin Art with Ruchi", group: "workshop" },
+    {
+      key: "workshop.subtitle",
+      value: "Join hands-on creative workshops and make your own resin pieces.",
+      group: "workshop",
+    },
+    {
+      key: "workshop.description",
+      value:
+        "Beginner-friendly resin workshops covering materials, safety, pouring techniques, finishing, and design basics.",
+      group: "workshop",
+    },
+    { key: "workshop.schedule", value: "Weekend batches available", group: "workshop" },
+    { key: "workshop.location", value: "Jalandhar Studio", group: "workshop" },
+    { key: "workshop.seats", value: "Limited seats per batch", group: "workshop" },
+    { key: "workshop.cta", value: "Book Workshop Seat", group: "workshop" },
+    { key: "menu.workshop.badge", value: "New", group: "menu" },
+    { key: "menu.gallery.badge", value: "", group: "menu" },
     { key: "gallery.title", value: "Artwork Showcase", group: "gallery" },
     {
       key: "gallery.subtitle",
@@ -185,6 +204,7 @@ async function seed() {
     { key: "aboutAccent2", src: img(2), alt: "Featured resin artwork 2", section: "about" },
     { key: "aboutAccent3", src: img(18), alt: "Featured resin artwork 3", section: "about" },
     { key: "aboutAccent4", src: img(26), alt: "Featured resin artwork 4", section: "about" },
+    { key: "workshopMain", src: img(14), alt: "Resin workshop session", section: "workshop" },
     { key: "process1", src: img(20), alt: "Process step 1", section: "process" },
     { key: "process2", src: img(21), alt: "Process step 2", section: "process" },
     { key: "process3", src: img(22), alt: "Process step 3", section: "process" },

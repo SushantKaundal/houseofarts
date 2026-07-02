@@ -8,6 +8,16 @@
 .theme-card-text-muted { color: var(--theme-card-text-muted); }
 .theme-page-bg { background: var(--color-ivory); }
 
+.hero-zone-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--theme-text-primary);
+  opacity: 0.88;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
 .theme-hero-zone-bg { background: var(--theme-zone-gradient); }
 .theme-hero-zone-bg::before {
   content: "";

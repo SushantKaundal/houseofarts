@@ -109,7 +109,7 @@ export default function Gallery() {
               <img
                 src={resolveImageUrl(item.src)}
                 alt={item.title}
-                className="w-full h-48 sm:h-52 md:h-56 object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-auto object-contain bg-white/40 transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-5">

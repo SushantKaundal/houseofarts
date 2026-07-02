@@ -2,7 +2,6 @@ import { useRef, useEffect, useState, lazy, Suspense } from "react"
 import { motion } from "framer-motion"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ChevronDown } from "lucide-react"
 import Button from "../ui/Button"
 import { useSite } from "../../context/SiteContext"
 import { resolveImageUrl } from "../../lib/api"
@@ -54,15 +53,15 @@ export default function Hero() {
         </Suspense>
       )}
 
-      <div className="relative max-w-7xl mx-auto px-4 md:px-8 w-full pt-24 pb-10 md:pt-28 md:pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 w-full pt-24 pb-6 md:pt-28 md:pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-5 flex justify-center order-1">
             <motion.div
               ref={imageRef}
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-full max-w-[260px] sm:max-w-sm lg:max-w-md"
+              className="relative w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[330px]"
             >
               <div className="absolute -inset-3 rounded-[2rem] theme-hero-glow blur-sm" />
               <div className="relative rounded-[1.75rem] theme-hero-frame p-[2px]">
@@ -70,7 +69,7 @@ export default function Hero() {
                   <img
                     src={resolveImageUrl(heroImg.src)}
                     alt={heroImg.alt}
-                    className="w-full h-auto max-h-[58vh] md:max-h-[66vh] object-contain"
+                    className="w-full h-auto max-h-[52vh] md:max-h-[60vh] object-contain"
                     fetchPriority="high"
                   />
                 </div>
@@ -91,7 +90,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div ref={textRef} className="lg:col-span-7 order-2 text-center lg:text-left">
+          <div ref={textRef} className="lg:col-span-7 order-2 text-center lg:text-left lg:-mt-8">
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -130,15 +129,6 @@ export default function Hero() {
           </div>
         </div>
 
-        <motion.a
-          href="#work-strip"
-          className="flex flex-col items-center gap-1 mt-10 theme-text-muted hover:text-gold transition-colors"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <span className="text-[9px] uppercase tracking-[0.2em]">Explore</span>
-          <ChevronDown size={16} />
-        </motion.a>
       </div>
     </section>
   )

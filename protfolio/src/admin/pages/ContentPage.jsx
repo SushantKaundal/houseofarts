@@ -3,9 +3,11 @@ import { api } from "../../lib/api"
 
 const GROUPS = {
   site: "Site Info",
+  menu: "Menu Badges",
   hero: "Hero Section",
   about: "About Section",
   services: "Services Section",
+  workshop: "Workshop Section",
   gallery: "Gallery Section",
   process: "Process Section",
   testimonials: "Testimonials Section",
@@ -14,12 +16,38 @@ const GROUPS = {
   stats: "Stats",
 }
 
+const REQUIRED_CONTENT_ITEMS = [
+  { key: "menu.workshop.badge", group: "menu", value: "New" },
+  { key: "menu.gallery.badge", group: "menu", value: "" },
+  { key: "workshop.badge", group: "workshop", value: "Workshop" },
+  { key: "workshop.title", group: "workshop", value: "Learn Resin Art with Ruchi" },
+  { key: "workshop.subtitle", group: "workshop", value: "Join hands-on creative workshops and make your own resin pieces." },
+  { key: "workshop.description", group: "workshop", value: "Beginner-friendly resin workshops covering materials, safety, pouring techniques, finishing, and design basics." },
+  { key: "workshop.schedule", group: "workshop", value: "Weekend batches available" },
+  { key: "workshop.location", group: "workshop", value: "Jalandhar Studio" },
+  { key: "workshop.seats", group: "workshop", value: "Limited seats per batch" },
+  { key: "workshop.cta", group: "workshop", value: "Book Workshop Seat" },
+]
+
 export default function ContentPage() {
   const [items, setItems] = useState([])
   const [saving, setSaving] = useState(null)
   const [msg, setMsg] = useState("")
 
-  const load = () => api.getContent().then(setItems).catch(() => {})
+  const load = () =>
+    api
+      .getContent()
+      .then((loaded) => {
+        const map = new Map(loaded.map((item) => [item.key, item]))
+        const merged = [...loaded]
+        REQUIRED_CONTENT_ITEMS.forEach((required) => {
+          if (!map.has(required.key)) {
+            merged.push({ _id: `new-${required.key}`, ...required })
+          }
+        })
+        setItems(merged)
+      })
+      .catch(() => {})
 
   useEffect(() => { load() }, [])
 

@@ -3,10 +3,30 @@ import { api } from "../../lib/api"
 import ImageUploader from "../components/ImageUploader"
 import { resolveImageUrl } from "../../lib/api"
 
+const REQUIRED_IMAGES = [
+  {
+    key: "workshopMain",
+    src: "/images/ruchinew/image00014.jpg",
+    alt: "Resin workshop session",
+    section: "workshop",
+  },
+]
+
 export default function ImagesPage() {
   const [images, setImages] = useState([])
 
-  const load = () => api.getImages().then(setImages).catch(() => {})
+  const load = () =>
+    api
+      .getImages()
+      .then((loaded) => {
+        const map = new Map(loaded.map((item) => [item.key, item]))
+        const merged = [...loaded]
+        REQUIRED_IMAGES.forEach((required) => {
+          if (!map.has(required.key)) merged.push({ _id: `new-${required.key}`, ...required })
+        })
+        setImages(merged)
+      })
+      .catch(() => {})
 
   useEffect(() => { load() }, [])
 
